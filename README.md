@@ -27,7 +27,7 @@ Lock, CFG Lock desactivado si el firmware lo permite y DVMT Pre-Allocated en
 
 macOS Tahoe no está soportado oficialmente en este modelo de Mac no original.
 La EFI puede arrancar el instalador, pero no garantiza aceleración Metal en la
-UHD 620, Wi-Fi Broadcom o Bluetooth hasta probar la build concreta de Tahoe y
+UHD 620, Wi-Fi Intel o Bluetooth hasta probar la build concreta de Tahoe y
 aplicar los root patches de OpenCore Legacy Patcher que correspondan. La MX150
 no tiene soporte gráfico funcional en macOS y debe permanecer desactivada.
 
@@ -35,6 +35,20 @@ no tiene soporte gráfico funcional en macOS y debe permanecer desactivada.
 para seleccionar redes. El Bluetooth Intel depende de que el dispositivo USB
 `8087:0a2a` permanezca visible; si desaparece tras suspensión, hay que revisar
 el mapeo USB y no cambiar a kexts Broadcom.
+
+## USB tethering Android
+
+HoRNDIS no se añade a esta EFI. No es un driver de arranque de OpenCore, sino
+un kext antiguo que se instala dentro de macOS en
+`/Library/Extensions/HoRNDIS.kext`. La última release oficial es `9.2` y su
+código fuente no recibe cambios desde 2018; no existe garantía de que cargue en
+Tahoe y forzarlo dentro de `EFI/OC/Kexts` puede causar un kernel panic.
+
+Después de arrancar macOS, descarga el instalador oficial desde
+[HoRNDIS 9.2](https://github.com/jwise/HoRNDIS/releases/tag/rel9.2), instala el
+`.pkg`, reinicia y activa **USB tethering** en el teléfono Android. Si Tahoe
+rechaza el kext, utiliza Wi-Fi tethering o un adaptador Ethernet USB compatible;
+no copies manualmente HoRNDIS a la EFI.
 
 ## Primer arranque
 
