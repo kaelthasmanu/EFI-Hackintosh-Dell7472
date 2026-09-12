@@ -1104,7 +1104,7 @@
 				AAAAAAAAAAAAAAAAAAA=
 				</data>
 				<key>boot-args</key>
-				<string>-v debug=0x100 keepsyms=1</string>
+				<string>-v debug=0x100 keepsyms=1 darkwake=0</string>
 				<key>csr-active-config</key>
 				<data>
 				AwoAAA==
